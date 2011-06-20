@@ -14,10 +14,12 @@ module Devise
       # to sign in page.
       def authenticate!
         debugger
-        login_with = params[scope][Devise.authentication_keys.first]
+        login_key = Devise.authentication_keys.first
+        login_with = params[scope][login_key]
         password = params[scope][:password]
+
         if Devise::AdAdapter.valid_credentials?(login_with, password)
-          success!(login_with)
+          success!(User.where(login_key => login_with).first)
         else
           fail(:invalid)
         end
