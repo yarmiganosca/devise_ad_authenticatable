@@ -13,6 +13,7 @@ module Devise
       # success and the authenticated user if everything is okay. Otherwise redirect
       # to sign in page.
       def authenticate!
+        debugger
         if resource = mapping.to.authenticate_with_ad(params[scope])
           success!(resource)
         else
@@ -32,5 +33,5 @@ module Devise
     end
   end
 end
-
+debugger
 Warden::Strategies.add(:ad_authenticatable, Devise::Strategies::AdAuthenticatable)
