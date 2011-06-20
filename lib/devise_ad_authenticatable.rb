@@ -21,7 +21,7 @@ module Devise
   @@ad_config = "#{Rails.root}/config/ad.yml"
   
   mattr_accessor :ad_update_password
-  @@ad_update_password = true
+  @@ad_update_password = false
   
   mattr_accessor :ad_check_group_membership
   @@ad_check_group_membership = false
