@@ -4,7 +4,7 @@ require 'devise'
 require 'devise_ad_authenticatable/exception'
 require 'devise_ad_authenticatable/logger'
 require 'devise_ad_authenticatable/schema'
-require 'devise_ad_authenticatable/ldap_adapter'
+require 'devise_ad_authenticatable/ad_adapter'
 require 'devise_ad_authenticatable/routes'
 
 # Get ad information from config/ad.yml now

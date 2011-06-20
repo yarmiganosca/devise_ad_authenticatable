@@ -16,7 +16,7 @@ module Devise
         debugger
         login_with = params[scope][Devise.authentication_keys.first]
         password = params[scope][:password]
-        if Devise::AdAdapter.valid_credentials(login_with, password)
+        if Devise::AdAdapter.valid_credentials?(login_with, password)
           success!(resource)
         else
           fail(:invalid)
