@@ -7,7 +7,7 @@ require 'devise_ad_authenticatable/schema'
 require 'devise_ad_authenticatable/ldap_adapter'
 require 'devise_ad_authenticatable/routes'
 
-# Get ad information from config/ldap.yml now
+# Get ad information from config/ad.yml now
 module Devise
   # Allow logging
   mattr_accessor :ad_logger
@@ -18,7 +18,7 @@ module Devise
   @@ad_create_user = false
   
   mattr_accessor :ad_config
-  # @@ad_config = "#{Rails.root}/config/ldap.yml"
+  @@ad_config = "#{Rails.root}/config/ad.yml"
   
   mattr_accessor :ad_update_password
   @@ad_update_password = true
@@ -33,7 +33,7 @@ module Devise
   @@ad_use_admin_to_bind = false
   
   mattr_accessor :ad_auth_username_builder
-  @@ad_auth_username_builder = Proc.new() {|attribute, login, ldap| "#{attribute}=#{login},#{ldap.base}" }
+  @@ad_auth_username_builder = Proc.new() {|attribute, login, ldap| "#{attribute}=#{login}" }
 end
 
 # Add ad_authenticatable strategy to defaults.

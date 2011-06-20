@@ -2,7 +2,7 @@ require "net/ldap"
 
 module Devise
 
-  module ADAdapter
+  module AdAdapter
     
     def self.valid_credentials?(login, password_plaintext)
       options = {:login => login, 
@@ -10,11 +10,11 @@ module Devise
                  :ad_auth_username_builder => ::Devise.ad_auth_username_builder,
                  :admin => ::Devise.ad_use_admin_to_bind}
                  
-      resource = ADConnect.new(options)
+      resource = AdConnect.new(options)
       resource.authorized?
     end
 
-    class ADConnect
+    class AdConnect
 
       attr_reader :ad, :login
 
@@ -39,7 +39,7 @@ module Devise
       end
 
       def dn
-        DeviseADAuthenticatable::Logger.send("AD search: #{@attribute}=#{@login}")
+        DeviseAdAuthenticatable::Logger.send("AD search: #{@attribute}=#{@login}")
         filter = Net::LDAP::Filter.eq(@attribute.to_s, @login.to_s)
         ad_entry = nil
         @ad.search(:filter => filter) {|entry| ad_entry = entry}
@@ -60,12 +60,12 @@ module Devise
       end
 
       def authorized?
-        DeviseADAuthenticatable::Logger.send("Authorizing user #{@login}")
+        DeviseAdAuthenticatable::Logger.send("Authorizing user #{@login}")
         authenticated?
       end
 
       def find_ad_user(ad)
-        DeviseADAuthenticatable::Logger.send("Finding user: #{dn}")
+        DeviseAdAuthenticatable::Logger.send("Finding user: #{dn}")
         ad.search(:base => dn, :scope => Net::LDAP::SearchScope_BaseObject).try(:first)
       end
 

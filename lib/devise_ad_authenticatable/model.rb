@@ -9,7 +9,7 @@ module Devise
     #    User.authenticate('email@test.com', 'password123')  # returns authenticated user or nil
     #    User.find(1).valid_password?('password123')         # returns true/false
     #
-    module ADAuthenticatable
+    module AdAuthenticatable
       extend ActiveSupport::Concern
 
       included do
@@ -23,7 +23,7 @@ module Devise
 
       # Checks if a resource is valid upon authentication.
       def valid_ad_authentication?(password)
-        if Devise::ADAdapter.valid_credentials?(login_with, password)
+        if Devise::AdAdapter.valid_credentials?(login_with, password)
           return true
         else
           return false

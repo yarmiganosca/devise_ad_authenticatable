@@ -1,4 +1,4 @@
-module DeviseADAuthenticatable
+module DeviseAdAuthenticatable
   VERSION = "0.0.1"
 end
 

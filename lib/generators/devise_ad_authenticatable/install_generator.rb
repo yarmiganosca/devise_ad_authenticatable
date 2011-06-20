@@ -1,10 +1,10 @@
-module DeviseADAuthenticatable
+module DeviseAdAuthenticatable
   class InstallGenerator < Rails::Generators::Base
     source_root File.expand_path("../templates", __FILE__)
     
     class_option :user_model, :type => :string, :default => "user", :desc => "Model to update"
     class_option :update_model, :type => :boolean, :default => true, :desc => "Update model to change from database_authenticatable to ad_authenticatable"
-    class_option :add_rescue, :type => :boolean, :default => true, :desc => "Update Application Controller with resuce_from for DeviseADAuthenticatable::ADException"
+    class_option :add_rescue, :type => :boolean, :default => true, :desc => "Update Application Controller with resuce_from for DeviseAdAuthenticatable::AdException"
     class_option :advanced, :type => :boolean, :desc => "Add advanced config options to the devise initializer"
     
     
@@ -51,7 +51,7 @@ module DeviseADAuthenticatable
     
     def rescue_from_exception
       <<-eof
-  rescue_from DeviseADAuthenticatable::ADException do |exception|
+  rescue_from DeviseAdAuthenticatable::AdException do |exception|
     render :text => exception, :status => 500
   end
       eof

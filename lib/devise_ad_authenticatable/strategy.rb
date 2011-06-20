@@ -4,7 +4,7 @@ module Devise
   module Strategies
     # Strategy for signing in a user based on his login and password using AD.
     # Redirects to sign_in page if it's not authenticated
-    class ADAuthenticatable < Authenticatable
+    class AdAuthenticatable < Authenticatable
       def valid?
         valid_controller? && valid_params? && mapping.to.respond_to?(:authenticate_with_ad)
       end
@@ -33,4 +33,4 @@ module Devise
   end
 end
 
-Warden::Strategies.add(:ad_authenticatable, Devise::Strategies::ADAuthenticatable)
+Warden::Strategies.add(:ad_authenticatable, Devise::Strategies::AdAuthenticatable)

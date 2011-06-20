@@ -1,6 +1,6 @@
-module DeviseADAuthenticatable
+module DeviseAdAuthenticatable
 
-  class ADException < Exception
+  class AdException < Exception
   end
 
 end
