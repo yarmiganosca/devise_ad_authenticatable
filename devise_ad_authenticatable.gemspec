@@ -18,6 +18,6 @@ Gem::Specification.new do |s|
   s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
   s.require_paths = ["lib"]
 
-  s.add_dependency('devise')
-  s.add_dependency('net-ldap')
+  s.add_dependency(%q<devise>)
+  s.add_dependency(%q<net-ldap>)
 end
