@@ -32,7 +32,7 @@ module DeviseAdAuthenticatable
   # config.ad_logger = true
   # config.ad_create_user = false
   # config.ad_update_password = true
-  # config.ad_config = "\#{Rails.root}/config/ad.yml"
+  config.ad_config = "\#{Rails.root}/config/ad.yml"
   # config.ad_check_group_membership = false
   # config.ad_check_attributes = false
   # config.ad_use_admin_to_bind = false

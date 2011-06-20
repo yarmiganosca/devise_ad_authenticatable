@@ -17,7 +17,7 @@ module Devise
         login_with = params[scope][Devise.authentication_keys.first]
         password = params[scope][:password]
         if Devise::AdAdapter.valid_credentials?(login_with, password)
-          success!(resource)
+          success!(login_with)
         else
           fail(:invalid)
         end
@@ -35,5 +35,5 @@ module Devise
     end
   end
 end
-debugger
+
 Warden::Strategies.add(:ad_authenticatable, Devise::Strategies::AdAuthenticatable)
