@@ -19,7 +19,7 @@ module Devise
       attr_reader :ad, :login
 
       def initialize(params = {})
-        ad_config = YAML.load(ERB.new(File.read(::Devise.ad_config || "#{Rails.root}/config/ad.yml")).result)[Rails.env]
+        ad_config = YAML.load(ERB.new(File.read(::Devise.ad_config)).result)[Rails.env]
 
         ad_options = params
         ad_options[:encryption] = :simple_tls if ad_config["ssl"]
