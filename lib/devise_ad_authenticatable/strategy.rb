@@ -15,7 +15,7 @@ module Devise
       def authenticate!
         debugger
         login_with = params[scope][Devise.authentication_keys.first]
-        password = params[scop][:password]
+        password = params[scope][:password]
         if Devise::AdAdapter.valid_credentials(login_with, password)
           success!(resource)
         else
