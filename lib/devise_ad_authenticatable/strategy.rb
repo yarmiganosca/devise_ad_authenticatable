@@ -6,7 +6,7 @@ module Devise
     # Redirects to sign_in page if it's not authenticated
     class AdAuthenticatable < Authenticatable
       def valid?
-        valid_controller? && valid_params? && mapping.to.respond_to?(:authenticate_with_ad)
+        valid_controller? && valid_params?
       end
 
       # Authenticate a user based on login and password params, returning to warden
@@ -14,7 +14,9 @@ module Devise
       # to sign in page.
       def authenticate!
         debugger
-        if resource = mapping.to.authenticate_with_ad(params[scope])
+        login_with = params[scope][Devise.authentication_keys.first]
+        password = params[scop][:password]
+        if Devise::AdAdapter.valid_credentials(login_with, password)
           success!(resource)
         else
           fail(:invalid)
