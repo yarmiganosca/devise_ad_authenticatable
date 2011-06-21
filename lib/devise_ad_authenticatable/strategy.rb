@@ -13,7 +13,6 @@ module Devise
       # success and the authenticated user if everything is okay. Otherwise redirect
       # to sign in page.
       def authenticate!
-        debugger
         login_key = Devise.authentication_keys.first
         login_with = params[scope][login_key]
         password = params[scope][:password]
