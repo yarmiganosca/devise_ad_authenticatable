@@ -36,6 +36,11 @@ module Devise
                 
         @login = params[:login]
         @password = params[:password]
+
+        if ad_config.key? "domain"
+          @domain = ad_config["domain"]
+          @login = [@login.split('@')[0], @domain].join('@')
+        end
       end
 
       def dn
